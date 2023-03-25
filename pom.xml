@@ -8,16 +8,8 @@
     <artifactId>HomeWork1</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-
     <name>HomeWork1</name>
     <url>http://maven.apache.org</url>
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>local nexus</name>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
-        </repository>
-    </repositories>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -36,11 +28,6 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.liga</groupId>
-            <artifactId>liga-copyright</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

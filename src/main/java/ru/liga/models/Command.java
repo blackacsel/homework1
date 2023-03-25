@@ -1,4 +1,4 @@
-package ru.liga;
+package ru.liga.models;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

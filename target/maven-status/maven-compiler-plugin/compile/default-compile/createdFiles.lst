@@ -1,0 +1,7 @@
+ru\liga\Console.class
+ru\liga\models\Curs$CursBuilder.class
+ru\liga\models\Curs.class
+ru\liga\Predict.class
+ru\liga\models\Command.class
+ru\liga\Main.class
+ru\liga\utils\CursFileReader.class
