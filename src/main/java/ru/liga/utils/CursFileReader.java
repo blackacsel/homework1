@@ -46,26 +46,21 @@ public class CursFileReader {
             if (titles.equals(TITLES)) {
                 reader.lines()
                         .map(line -> {
-                            try {
-                                return parseToCurs(Arrays.asList(line.split(DELIMITER)));
-                            } catch (ParseException e) {
-                                throw new RuntimeException(e);
-                            }
+                            try { return parseToCurs(Arrays.asList(line.split(DELIMITER))); }
+                            catch (ParseException e) { throw new RuntimeException(e); }
                         })
-                        .filter(curs -> curs.getCdx().equals(cdx))
-                        .filter(curs -> curs.getDate().before(Date.valueOf(LocalDate.now())))
+                        .filter(curs -> curs.getCdx().equals(cdx) && curs.getDate().before(Date.valueOf(LocalDate.now())))
                         .sorted(Comparator.comparing(Curs::getDate).reversed())
-                        .map(curs -> curs.getNominal().toString() + ";" +
-                                formatter.format(curs.getDate()) + ";" +
-                                curs.getCurs().toString() + ";" +
-                                curs.getCdx())
+                        .map(curs -> String.format("%s;%s;%s;%s",
+                                     curs.getNominal().toString(),
+                                     formatter.format(curs.getDate()),
+                                     curs.getCurs().toString(),
+                                     curs.getCdx()))
                         .forEach(line -> {
                             try {
                                 writer.write(line);
                                 writer.write("\n");
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
+                            } catch (IOException e) { throw new RuntimeException(e); }
                         });
             } else {
                 throw new IllegalArgumentException();
