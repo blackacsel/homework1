@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
@@ -17,6 +16,11 @@ public class CursFileReader {
     private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     private static final String DELIMITER = ";";
     private static final String TITLES = "nominal;date;curs;cdx";
+    private static final Integer NOMINAL_INDEX = 0;
+    private static final Integer DATE_INDEX = 1;
+    private static final Integer CURS_INDEX = 2;
+    private static final Integer CDX_INDEX = 3;
+
 
     public static List<Curs> read(File file, int count, String cdx) {
         try (InputStream inputStream = new FileInputStream(file);
@@ -45,10 +49,10 @@ public class CursFileReader {
 
         try {
             return Curs.builder()
-                    .nominal(parseInt(line.get(0)))
-                    .date(formatter.parse(line.get(1)))
-                    .curs(parseDouble(line.get(2)))
-                    .cdx(line.get(3))
+                    .nominal(parseInt(line.get(NOMINAL_INDEX)))
+                    .date(formatter.parse(line.get(DATE_INDEX)))
+                    .curs(parseDouble(line.get(CURS_INDEX)))
+                    .cdx(line.get(CDX_INDEX))
                     .build();
         } catch (ParseException e) {
             throw new RuntimeException("Файл содержит некорректные данные");

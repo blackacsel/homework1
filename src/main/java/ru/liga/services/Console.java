@@ -11,6 +11,8 @@ public class Console {
             "EVR", "Евро"));
     private final static String DELIMITER = " ";
     private final static String REGEX = "(rate (USD|TRY|EVR) (tomorrow|week))|(exit)";
+    private final static Integer CDX_INDEX = 1;
+    private final static Integer RANGE_INDEX = 2;
 
     public Console(Scanner scanner) {
         this.scanner = scanner;
@@ -29,8 +31,8 @@ public class Console {
 
         List<String> keyWords = Arrays.asList(line.split(DELIMITER));
 
-        String cdx = keyWords.get(1);
-        String range = keyWords.get(2);
+        String cdx = keyWords.get(CDX_INDEX);
+        String range = keyWords.get(RANGE_INDEX);
         return new Command(cdxDict.get(cdx), range);
     }
 
